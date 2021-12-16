@@ -45,6 +45,11 @@ function modelLoaded() {
   console.log('PoseNet Is Initialized');
 }
 
+function preload(){
+  ball_paddle=loadSound("ball_touch_paddel.wav");
+  ball_missed=loadSound("missed.wav");
+}
+
 function gotPoses(results)
 {
   if(results.length > 0)
@@ -111,11 +116,13 @@ if(game_status == "start")
     models();
 
     //function move call which in very important
-    move();
-
-    }
-
-  }
+    move()
+      if(ball.y >= paddle1Y && ball.y <= paddle1Y + paddle1Height){
+      ball_paddle.play();
+       }
+ 
+      }}
+  
 
 
 
@@ -215,4 +222,3 @@ function paddleInCanvas(){
  
   
 }
-
